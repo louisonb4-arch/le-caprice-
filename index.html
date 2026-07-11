@@ -26,11 +26,26 @@
   --f-mono:'Space Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
 ::selection{background:var(--sage);color:var(--cream-light)}
+
+/* grain fin : donne de la matière, comme une impression */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay}
+
+/* apparition des images (pas de zoom, opacité seule) */
+img{opacity:0;transition:opacity .6s ease}
+img.ready,.no-anim img{opacity:1}
 :focus-visible{outline:2px solid var(--sage);outline-offset:3px;border-radius:2px}
 button,a{touch-action:manipulation}
 html{scroll-behavior:smooth}
-body{font-family:var(--f-display);color:var(--ink);background:var(--olive-hover);-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-display);color:var(--ink);background:var(--olive-hover);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1}
+h1,h2{text-wrap:balance}
+p{text-wrap:pretty}
+.dish-price,.tm-tel,.avis-score .n,.item .p{font-variant-numeric:tabular-nums}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%;height:100%;object-fit:cover}
 
@@ -156,8 +171,8 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .ambiance .section-rule{background:var(--cream);opacity:0.4}
 
 /* ============ LA CARTE ============ */
-.carte{background:var(--cream-warm);padding:96px 46px}
-.carte-inner{max-width:1180px;margin:0 auto}
+.carte{background:var(--cream-warm);padding:132px 46px 124px}
+.carte-inner{max-width:1240px;margin:0 auto}
 .tabs{display:flex;flex-wrap:wrap;gap:0 30px;margin-bottom:44px;border-bottom:1px solid rgba(59,62,43,0.18)}
 .tab{position:relative;font-family:var(--f-mono);font-size:11.5px;letter-spacing:0.14em;padding:0 0 14px;border:none;background:none;color:#9a9885;cursor:pointer;transition:color .2s}
 .tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--olive);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
@@ -170,9 +185,10 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .dish-ph{aspect-ratio:1/1;border-radius:24px;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,#d9d0be 0px,#d9d0be 12px,#cfc5b0 12px,#cfc5b0 24px)}
 .dish-ph span{font-family:var(--f-mono);font-size:10px;letter-spacing:0.1em;color:#8a8265;text-align:center;padding:0 12px}
 .dish-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;gap:10px}
-.dish{cursor:default}
-.dish .dish-img{transition:filter .25s ease}
-.dish:hover .dish-img{filter:brightness(1.05) saturate(1.04)}
+.dish{cursor:default;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.dish .dish-img{transition:filter .35s ease,box-shadow .35s ease}
+.dish:hover{transform:translateY(-6px)}
+.dish:hover .dish-img{filter:brightness(1.04);box-shadow:0 18px 40px rgba(44,42,34,0.16)}
 .dish:hover .dish-name{color:var(--sage)}
 .dish-name{font-weight:700;font-size:14px;letter-spacing:0.06em;transition:color .2s}
 .dish-price{font-family:var(--f-mono);font-weight:700;font-size:14px;color:var(--olive)}
@@ -185,11 +201,11 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 /* ============ AMBIANCE (scroll horizontal pinné) ============ */
 .ambiance{background:var(--olive);color:var(--cream);padding:96px 0 0;overflow:hidden}
-.ambiance-head{max-width:1180px;margin:0 auto;padding:0 46px}
+.ambiance-head{max-width:1240px;margin:0 auto;padding:0 46px}
 .g-wrap{position:relative}
 .g-track{display:flex;gap:26px;padding:10px 46px 96px;align-items:flex-end;width:max-content;will-change:transform}
 .g-item{flex:0 0 auto}
-.g-item .im{overflow:hidden;border-radius:24px;background:#2f3122;transition:filter .25s ease}
+.g-item .im{overflow:hidden;border-radius:24px;background:#2f3122;transition:filter .35s ease,box-shadow .35s ease;box-shadow:0 20px 50px rgba(0,0,0,0.22)}
 .g-item:hover .im{filter:brightness(1.05)}
 .g-item img{height:56vh;min-height:340px;width:auto;object-fit:cover}
 .g-item .c{margin-top:12px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(236,230,217,0.5);display:flex;justify-content:space-between;gap:16px}
@@ -197,8 +213,8 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .no-anim .g-track{will-change:auto}
 
 /* ============ AVIS ============ */
-.avis{background:var(--cream-warm);padding:110px 46px 100px;position:relative;overflow:hidden}
-.avis-in{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.avis{background:var(--cream-warm);padding:132px 46px 124px;position:relative;overflow:hidden}
+.avis-in{max-width:1240px;margin:0 auto;position:relative;z-index:1}
 .avis-kicker{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:34px;padding-bottom:16px;border-bottom:1px solid rgba(59,62,43,0.2);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;color:var(--sage)}
 .avis-top{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-bottom:60px}
 .avis h2{font-weight:900;font-size:clamp(36px,5.4vw,72px);line-height:0.98;letter-spacing:-0.01em;text-transform:uppercase;color:var(--ink)}
@@ -224,13 +240,13 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .avis-foot .lnk:hover{color:var(--sage);border-color:var(--sage)}
 
 /* ============ CITATION ============ */
-.quote{position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#2f3122}
-.quote-img{position:absolute;inset:0}
+.quote{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#2f3122}
+.quote-img{position:absolute;top:-8%;left:0;right:0;height:116%;will-change:transform}
 .quote-overlay{position:absolute;inset:0;background:radial-gradient(110% 85% at 50% 50%,rgba(24,23,16,0.30) 0%,rgba(24,23,16,0.55) 100%)}
 .quote p{position:relative;z-index:2;padding:0 30px;font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:clamp(30px,4.5vw,52px);line-height:1.25;color:#fbf8f0;text-align:center;max-width:900px;text-shadow:0 1px 3px rgba(18,17,11,0.55), 0 4px 30px rgba(18,17,11,0.75)}
 
 /* ============ UNE TABLE CÔTÉ MER ============ */
-.table-mer{background:var(--cream);padding:84px 46px 64px;text-align:center;position:relative;overflow:hidden}
+.table-mer{background:var(--cream);padding:104px 46px 88px;text-align:center;position:relative;overflow:hidden}
 .table-mer-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1}
 .tm-title{font-weight:900;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-0.01em;color:var(--ink);text-transform:uppercase}
 .tm-title .q{color:var(--sage)}
@@ -652,6 +668,17 @@ function toggleMenu() {
   document.body.classList.toggle('menu-open');
 }
 
+// apparition des images une fois décodées (évite le « pop » brutal)
+function revealImages(scope) {
+  (scope || document).querySelectorAll('img:not(.ready)').forEach(img => {
+    if (img.complete && img.naturalWidth) img.classList.add('ready');
+    else img.addEventListener('load', () => img.classList.add('ready'), {once: true});
+    img.addEventListener('error', () => img.classList.add('ready'), {once: true});
+  });
+}
+revealImages();
+new MutationObserver(() => revealImages()).observe(document.body, {childList: true, subtree: true});
+
 const navEl = document.querySelector('.nav');
 let navTick = false;
 window.addEventListener('scroll', () => {
@@ -668,6 +695,7 @@ renderDishes();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
 (function () {
   const flat = location.search.includes('flat=1');
@@ -682,6 +710,16 @@ renderDishes();
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Inertie de scroll (Lenis) : donne le glissé des sites haut de gamme ---- */
+  let lenis = null;
+  if (window.Lenis && !window.matchMedia('(hover: none)').matches) {
+    lenis = new Lenis({lerp: 0.09, smoothWheel: true});
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.stop();
+  }
 
   /* ---- Animation d'ouverture : le wordmark se pose dans le hero ---- */
   const hero = document.querySelector('.hero');
@@ -717,6 +755,7 @@ renderDishes();
     setupHeroScroll();
     ScrollTrigger.refresh();
     window.scrollTo(0, 0);
+    if (lenis) { lenis.scrollTo(0, {immediate: true}); lenis.start(); }
   };
   setTimeout(finishIntro, 5000); // filet de sécurité : jamais bloqué derrière le rideau
 
@@ -790,9 +829,26 @@ renderDishes();
   }
 
   gsap.utils.toArray('.rv').forEach(el => {
-    gsap.to(el, {opacity:1, y:0, duration:0.7, ease:'power2.out',
+    gsap.to(el, {opacity:1, y:0, duration:0.9, ease:'power3.out',
       scrollTrigger:{trigger:el, start:'top 88%', once:true}});
   });
+
+  // titres de section : révélation par masque, montée depuis le bas
+  gsap.utils.toArray('.section-head h2, .avis h2, .tm-title').forEach(h => {
+    gsap.fromTo(h,
+      {clipPath: 'inset(0 0 105% 0)', y: 24},
+      {clipPath: 'inset(0 0 -5% 0)', y: 0, duration: 1, ease: 'power3.out',
+       scrollTrigger: {trigger: h, start: 'top 90%', once: true}});
+  });
+
+  // citation : la photo glisse doucement derrière le texte
+  const qImg = document.querySelector('.quote-img');
+  if (qImg) {
+    gsap.fromTo(qImg, {yPercent: -5}, {
+      yPercent: 5, ease: 'none',
+      scrollTrigger: {trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: true}
+    });
+  }
   const track = document.getElementById('gTrack');
   const isMobile = window.matchMedia('(max-width: 900px)').matches;
   if (isMobile) {
