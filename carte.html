@@ -142,13 +142,31 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   .nav-links{display:none}
   .nav-tel{display:none}
   .burger{display:block}
-  .page-head{padding:110px 24px 36px}
-  .toc{padding:6px 24px 40px;border-radius:0 0 32px 32px}
+  /* --- en-tête compact : on arrive vite aux boutons --- */
+  .page-head{padding:92px 22px 18px}
+  .page-head .over{font-size:9px;letter-spacing:0.18em;margin-bottom:10px}
+  .page-head h1{font-size:clamp(38px,12vw,54px);line-height:0.95}
+  .page-head h1 .serif{display:block;font-size:0.6em;margin-top:2px}
+  .page-head .tagline{margin-top:8px;font-size:16px}
+  .page-head .sub,.page-head .kids{display:none}
+
+  /* --- onglets : une seule rangée, swipe horizontal --- */
+  .toc{padding:14px 0 26px;border-radius:0 0 32px 32px}
+  .toc-inner{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;gap:8px;
+    padding:0 22px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .toc-inner::-webkit-scrollbar{display:none}
+  .toc button{flex:0 0 auto;scroll-snap-align:start;font-size:10.5px;padding:11px 16px;letter-spacing:0.06em}
   .menu-page{margin-top:-32px}
-  .menu-page{padding:88px 24px 24px}
+  .menu-page{padding:64px 22px 24px}
   .footer{border-radius:32px 32px 0 0;margin-top:-32px;padding-top:88px}
-  .items{grid-template-columns:1fr}
-  .cat-head h2{font-size:26px}
+  .items{grid-template-columns:1fr;row-gap:18px}
+  .cat-head h2{font-size:24px}
+  .cat-story{font-size:16px}
+  .item .n{font-size:13px}
+  .item .p{font-size:13px}
+  .item .d{font-size:12.5px}
+  .carte-band .bv{font-size:15px}
+  .page-cta{padding:34px 22px 64px}
   .cat-top{grid-template-columns:1fr;gap:12px;align-items:start}
   .cat-story{text-align:left;max-width:none}
   .carte-band-in{grid-template-columns:1fr}
@@ -364,7 +382,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   <div class="carte-band-in">
     <div><span class="bk">L'ARDOISE</span><span class="bv">La carte du jour s'écrit à la craie</span></div>
     <div><span class="bk">À EMPORTER</span><span class="bv">Tout part aussi sur la digue</span></div>
-    <div><span class="bk">LE SOIR D'ÉTÉ</span><span class="bv">Pensez à appeler avant 18 h</span></div>
+    <div><span class="bk">MENU ENFANTS</span><span class="bv">12,90 € jusqu'à 12 ans</span></div>
   </div>
 </div>
 

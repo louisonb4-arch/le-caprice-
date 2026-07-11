@@ -66,10 +66,13 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .js-intro{overflow:hidden}
 .curtain-bg{position:absolute;inset:0;background:var(--olive);will-change:transform}
 .curtain-word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 40px}
+.cw-group{will-change:transform}
 .curtain-word .cw{display:block;text-align:center;
   font-family:var(--f-display);font-weight:900;font-size:clamp(90px,14.5vw,220px);
   line-height:0.86;letter-spacing:-0.01em;color:var(--cream-title);
-  will-change:transform,clip-path}
+  will-change:clip-path}
+.curtain-word .cw-sub{display:block;text-align:center;margin-top:14px;
+  font-family:var(--f-mono);font-size:12px;letter-spacing:0.28em;color:rgba(242,237,224,0.65)}
 .js-intro .hero-info,.js-intro .hero-sub,.js-intro .hero-title{opacity:0}
 .js-intro .nav,.js-intro .nav-logo{opacity:0}
 
@@ -77,6 +80,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#2f3122}
 .hero-img{position:absolute;top:-14%;left:0;right:0;height:128%;will-change:transform}
 .hero-img-in{position:absolute;inset:0;will-change:transform}
+.hero-img-in picture{display:block;width:100%;height:100%}
 .hero-img-in img{width:100%;height:100%;object-fit:cover}
 .hero-title-wrap{will-change:transform}
 .nav-logo{transition:opacity .3s ease}
@@ -255,6 +259,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   /* --- hero --- */
   .hero{height:100svh;min-height:560px;border-radius:0 0 28px 28px}
   .hero-title,.curtain-word .cw{font-size:clamp(34px,11.5vw,64px);line-height:0.92}
+  .curtain-word .cw-sub{font-size:9.5px;letter-spacing:0.18em;margin-top:10px}
   .hero-title-wrap{padding:0 20px 30px}
   .hero-sub{font-size:9.5px;letter-spacing:0.18em;margin-top:10px}
   .hero-info{flex-direction:row;justify-content:space-between;gap:14px;padding:0 20px 16px;font-size:9px;line-height:1.85;letter-spacing:0.08em}
@@ -349,7 +354,12 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 <body>
 <div class="curtain" aria-hidden="true">
   <div class="curtain-bg"></div>
-  <div class="curtain-word"><span class="cw">LE CAPRICE</span></div>
+  <div class="curtain-word">
+    <div class="cw-group">
+      <span class="cw">LE CAPRICE</span>
+      <span class="cw-sub">↓ &nbsp; BAR · RESTAURANT · FACE À L'OCÉAN &nbsp; ↓</span>
+    </div>
+  </div>
 </div>
 
 <!-- ============ NAV ============ -->
@@ -377,7 +387,12 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 <!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="hero-img"><div class="hero-img-in"><img src="assets/hero-terrasse.jpg" alt="La terrasse du Caprice face à l'océan au coucher du soleil" fetchpriority="high"></div></div>
+  <div class="hero-img"><div class="hero-img-in">
+    <picture>
+      <source media="(max-width: 900px)" srcset="assets/hero-terrasse-mobile.jpg">
+      <img src="assets/hero-terrasse.jpg" alt="La terrasse du Caprice au crépuscule" fetchpriority="high">
+    </picture>
+  </div></div>
   <div class="hero-overlay"></div>
   <div class="hero-info">
     <div>195 ESPLANADE DE LA MER<br>85160 SAINT-JEAN-DE-MONTS<br>FACE À L'OCÉAN</div>
@@ -669,6 +684,8 @@ renderDishes();
   const curtain = document.querySelector('.curtain');
   const curtainBg = document.querySelector('.curtain-bg');
   const curtainWord = document.querySelector('.curtain-word .cw');
+  const curtainGroup = document.querySelector('.cw-group');
+  const curtainSub = document.querySelector('.cw-sub');
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   document.documentElement.classList.add('js-intro');
@@ -697,7 +714,7 @@ renderDishes();
     // mesure fiable : aucun transform résiduel sur le titre, page en haut
     window.scrollTo(0, 0);
     gsap.set(titleWrap, {clearProps: 'transform'});
-    gsap.set(curtainWord, {clearProps: 'transform'});
+    gsap.set([curtainWord, curtainGroup], {clearProps: 'transform'});
     const from = curtainWord.getBoundingClientRect();
     const to = heroTitle.getBoundingClientRect();
     const dy = to.top - from.top;
@@ -707,25 +724,26 @@ renderDishes();
     window.__introTL = tl;
 
     // 1. le mot se dévoile par le bas, plein écran
-    tl.fromTo(curtainWord,
-        {clipPath: 'inset(100% 0 0 0)', y: 30},
-        {clipPath: 'inset(0% 0 0 0)', y: 0, duration: 1.15, ease: 'power3.out'}, 0)
+    tl.fromTo(curtainGroup, {y: 30}, {y: 0, duration: 1.15, ease: 'power3.out'}, 0)
+      .fromTo(curtainWord,
+        {clipPath: 'inset(100% 0 0 0)'},
+        {clipPath: 'inset(0% 0 0 0)', duration: 1.15, ease: 'power3.out'}, 0)
+      .fromTo(curtainSub, {opacity: 0}, {opacity: 1, duration: 0.7, ease: 'power2.out'}, 0.75)
 
-      // 2. il descend se poser à sa place pendant que le rideau se lève sur la photo
-      .to(curtainWord, {y: dy, x: dx, duration: 1.25, ease: 'power3.inOut'}, 1.5)
+      // 2. le mot et sa sous-ligne descendent se poser pendant que le rideau se lève
+      .to(curtainGroup, {y: dy, x: dx, duration: 1.25, ease: 'power3.inOut'}, 1.5)
       .to(curtainBg, {yPercent: -100, duration: 1.25, ease: 'power3.inOut'}, 1.5)
       .fromTo(heroImgIn, {yPercent: 9}, {yPercent: 0, duration: 1.5, ease: 'power3.inOut'}, 1.5)
 
       // 3. relais invisible : le vrai titre prend le relais du mot du rideau
-      .set(heroTitle, {opacity: 1}, 2.72)
+      .set([heroTitle, '.hero-sub'], {opacity: 1, y: 0}, 2.72)
       .set(curtain, {display: 'none'}, 2.74)
 
-      // 4. le reste du hero et la nav arrivent
-      .to(['.hero-info', '.hero-sub'],
-        {opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.08}, 2.6)
+      // 4. les coordonnées et la nav arrivent
+      .to('.hero-info', {opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'}, 2.6)
       .to(navEl0, {opacity: 1, duration: 0.6, ease: 'power2.out'}, 2.5);
 
-    gsap.set(['.hero-info', '.hero-sub'], {y: 14});
+    gsap.set('.hero-info', {y: 14});
   };
 
   pinTop();
