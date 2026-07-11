@@ -244,50 +244,106 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:900px){
-  .nav{padding:20px 22px}
-  .nav.scrolled{padding:12px 22px}
-  .nav-links{display:none}
-  .nav-tel{display:none}
-  .burger{display:block}
-  .hero{height:640px}
-  .hero-info{flex-direction:column;gap:10px;padding:0 24px 14px}
-  .hero-info .right{text-align:left}
-  .intro,.carte{padding:72px 24px}
-  .ambiance{padding:72px 0 0}
-  .ambiance-head{padding:0 24px}
-  .g-track{padding:10px 24px 72px;gap:16px}
-  .g-item img{height:44vh;min-height:260px}
-  .g-item .im{border-radius:18px}
-  .hero{border-radius:0 0 32px 32px}
-  .intro{margin-top:-32px}
-  .footer{border-radius:32px 32px 0 0;margin-top:-32px;padding-top:88px}
-  .intro{padding:96px 0 72px}
-  .hero-title-wrap{padding:0 24px 40px}
-  .intro-head{padding:0 24px}
-  .intro-body{grid-template-columns:1fr;gap:44px;padding:0 24px;margin-top:0}
+  /* --- nav --- */
+  .nav{padding:18px 20px}
+  .nav.scrolled{padding:12px 20px}
+  .nav-links,.nav-tel{display:none}
+  .burger{display:block;margin:-8px -8px -8px 0}
+  .mobile-menu{gap:26px;font-size:14px;padding:0 24px;text-align:center}
+  .mobile-menu .btn-outline{margin-top:10px}
+
+  /* --- hero --- */
+  .hero{height:100svh;min-height:560px;border-radius:0 0 28px 28px}
+  .hero-title,.curtain-word .cw{font-size:clamp(34px,11.5vw,64px);line-height:0.92}
+  .hero-title-wrap{padding:0 20px 30px}
+  .hero-sub{font-size:9.5px;letter-spacing:0.18em;margin-top:10px}
+  .hero-info{flex-direction:row;justify-content:space-between;gap:14px;padding:0 20px 16px;font-size:9px;line-height:1.85;letter-spacing:0.08em}
+  .hero-info .right{text-align:right}
+  .curtain-word{padding:0 20px}
+
+  /* --- la maison --- */
+  .intro{padding:72px 0 40px;margin-top:-28px}
+  .intro-head{padding:0 20px}
+  .intro-kicker{margin-bottom:22px;font-size:9px;letter-spacing:0.14em}
+  .intro-kicker .k-right{display:none}
+  .intro-display{font-size:clamp(34px,10vw,56px)}
+  .intro-display .l2{padding-left:26px}
+  .intro-body{grid-template-columns:1fr;gap:32px;padding:0 20px;margin-top:0}
   .intro-side{display:none}
   .intro-col{padding-top:0;max-width:none}
-  .intro-photo{border-radius:64px 5px 5px 5px}
-  .intro-stamp{right:-10px;bottom:-30px;width:96px;height:96px}
-  .dishes{grid-template-columns:repeat(2,1fr)}
-  .dish-img,.dish-ph{border-radius:18px}
-  .gallery{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,180px)}
-  .table-mer{padding:72px 24px 56px}
-  .footer{padding:88px 24px 28px}
-  .avis{padding:72px 24px}
-  .avis-top{grid-template-columns:1fr;align-items:start;gap:26px;margin-bottom:38px}
+  .intro-text{font-size:15px;line-height:1.75}
+  .intro-text .lead{font-size:19px}
+  .intro-num{margin:24px 0 22px;gap:14px}
+  .intro-num .big{font-size:58px}
+  .intro-num .cap{font-size:16px;max-width:150px}
+  .intro-photo{aspect-ratio:4/5;border-radius:64px 5px 5px 5px}
+  .intro-stamp{right:-6px;bottom:-22px;width:84px;height:84px}
+  .intro-caption{font-size:9px;letter-spacing:0.14em}
+
+  /* --- sections communes --- */
+  .section-head{flex-direction:column;align-items:flex-start;gap:6px}
+  .section-head h2{font-size:30px}
+  .section-head span{font-size:10px}
+
+  /* --- la carte --- */
+  .carte{padding:64px 20px}
+  .tabs{gap:8px;margin-bottom:28px}
+  .tab{font-size:10px;padding:9px 14px;letter-spacing:0.06em}
+  .dishes{grid-template-columns:repeat(2,1fr);gap:14px}
+  .dish-img,.dish-ph{border-radius:14px}
+  .dish-line{margin-top:12px;gap:6px}
+  .dish-name{font-size:11.5px;letter-spacing:0.03em}
+  .dish-price{font-size:11.5px}
+  .dish-desc{font-size:11.5px;line-height:1.5;margin-top:5px}
+  .carte-cta{margin-top:34px}
+  .btn-solid{padding:14px 24px;font-size:11px}
+  .carte-note{font-size:9.5px;letter-spacing:0.04em}
+
+  /* --- galerie : swipe natif --- */
+  .ambiance{padding:64px 0 0}
+  .ambiance-head{padding:0 20px}
+  .g-swipe .g-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .g-swipe .g-wrap::-webkit-scrollbar{display:none}
+  .g-swipe .g-track{transform:none !important}
+  .g-track{padding:8px 20px 56px;gap:12px}
+  .g-item{scroll-snap-align:center}
+  .g-item img{height:46vh;min-height:0;max-height:340px}
+  .g-item .im{border-radius:16px}
+  .g-item .c{font-size:9px;letter-spacing:0.12em;margin-top:9px}
+
+  /* --- avis --- */
+  .avis{padding:64px 20px}
+  .avis-kicker{font-size:9px;letter-spacing:0.14em}
+  .avis-top{grid-template-columns:1fr;align-items:start;gap:20px;margin-bottom:30px}
+  .avis h2{font-size:clamp(30px,8.5vw,42px)}
   .avis-score{text-align:left}
   .avis-score .stars{justify-content:flex-start}
-  .avis-grid{grid-template-columns:1fr;gap:32px}
-  .avis-grid>figure{padding:30px 0 0;border-left:none;border-top:1px solid rgba(59,62,43,0.2)}
+  .avis-score .n{font-size:38px}
+  .avis-grid{grid-template-columns:1fr;gap:26px}
+  .avis-grid>figure{padding:26px 0 0;border-left:none;border-top:1px solid rgba(59,62,43,0.2)}
   .avis-grid>figure:first-child{border-top:none;padding-top:0}
-  .footer-grid{grid-template-columns:1fr;gap:34px}
-  .section-head{flex-direction:column;gap:8px}
-  .section-head h2{font-size:36px}
+  .avis-grid blockquote{font-size:19px;margin-bottom:14px}
+  .avis-grid .t{font-size:12px}
+  .avis-foot{margin-top:34px;gap:14px}
+
+  /* --- citation --- */
+  .quote{min-height:260px}
+  .quote p{font-size:clamp(24px,7vw,34px);padding:0 20px}
+
+  /* --- une table côté mer --- */
+  .table-mer{padding:56px 20px 44px}
+  .tm-title{font-size:20px}
+  .tm-tel{font-size:30px}
+  .tm-note{font-size:9px;letter-spacing:0.06em;line-height:1.7}
+
+  /* --- footer --- */
+  .footer{padding:76px 20px 30px;border-radius:32px 32px 0 0;margin-top:-32px}
+  .footer-grid{grid-template-columns:1fr;gap:28px;padding-bottom:34px}
+  .footer-logo{font-size:20px;margin-bottom:12px}
+  .footer-baseline{font-size:17px}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;font-size:9px}
 }
-@media (max-width:520px){
-  .dishes{grid-template-columns:1fr}
-}
+
 </style>
 </head>
 <body>
@@ -710,14 +766,20 @@ renderDishes();
       scrollTrigger:{trigger:el, start:'top 88%', once:true}});
   });
   const track = document.getElementById('gTrack');
-  const getScroll = () => track.scrollWidth - window.innerWidth;
-  gsap.to(track, {
-    x: () => -getScroll(), ease: 'none',
-    scrollTrigger: {
-      trigger: '#ambiance', start: 'top top', end: () => '+=' + getScroll(),
-      pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1
-    }
-  });
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  if (isMobile) {
+    // sur mobile : galerie en swipe horizontal natif, pas de pin (le pin bloque le scroll)
+    document.getElementById('ambiance').classList.add('g-swipe');
+  } else {
+    const getScroll = () => track.scrollWidth - window.innerWidth;
+    gsap.to(track, {
+      x: () => -getScroll(), ease: 'none',
+      scrollTrigger: {
+        trigger: '#ambiance', start: 'top top', end: () => '+=' + getScroll(),
+        pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1
+      }
+    });
+  }
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>
