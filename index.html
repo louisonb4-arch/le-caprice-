@@ -182,11 +182,15 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .dishes{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;transition:opacity .15s}
 .dishes.fading{opacity:0}
 .dish-img{aspect-ratio:1/1;border-radius:24px;overflow:hidden}
-.dish-ph{aspect-ratio:1/1;border-radius:24px;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,#d9d0be 0px,#d9d0be 12px,#cfc5b0 12px,#cfc5b0 24px)}
-.dish-ph span{font-family:var(--f-mono);font-size:10px;letter-spacing:0.1em;color:#8a8265;text-align:center;padding:0 12px}
+.dish-ph{position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:26px;background:var(--olive);color:var(--cream)}
+.dish-ph::after{content:"";position:absolute;top:-30%;right:-20%;width:70%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(236,230,217,0.14)}
+.dish-ph .ph-name{font-weight:800;font-size:clamp(19px,1.75vw,26px);line-height:1.02;letter-spacing:0.01em;text-transform:uppercase;text-wrap:balance}
+.dish-ph .ph-rule{width:34px;height:1px;background:rgba(236,230,217,0.45)}
+.dish-ph .ph-tag{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.22em;color:rgba(236,230,217,0.5)}
+.dish:hover .dish-ph{box-shadow:0 18px 40px rgba(44,42,34,0.16)}
 .dish-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;gap:10px}
 .dish{cursor:default;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.dish .dish-img{transition:filter .35s ease,box-shadow .35s ease}
+.dish .dish-img,.dish .dish-ph{transition:filter .35s ease,box-shadow .35s ease}
 .dish:hover{transform:translateY(-6px)}
 .dish:hover .dish-img{filter:brightness(1.04);box-shadow:0 18px 40px rgba(44,42,34,0.16)}
 .dish:hover .dish-name{color:var(--sage)}
@@ -424,7 +428,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   <div class="hero-overlay"></div>
   <div class="hero-info">
     <div>195 ESPLANADE DE LA MER<br>85160 SAINT-JEAN-DE-MONTS<br>FACE À L'OCÉAN</div>
-    <div class="right">OUVERT MAR – DIM<br>11H–15H · 18H–23H<br>FERMÉ LUN &amp; MER</div>
+    <div class="right">OUVERT 7J/7<br>10H – 22H15<br>AVRIL → SEPTEMBRE</div>
   </div>
   <div class="hero-title-wrap">
     <h1 class="hero-title">LE CAPRICE</h1>
@@ -489,7 +493,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   <div class="ambiance-head">
     <div class="section-head rv">
       <h2>LA GALERIE</h2>
-      <span>/ DE 11H45 AU COUCHANT</span>
+      <span>/ DE 10H AU COUCHANT</span>
     </div>
     <div class="section-rule"></div>
   </div>
@@ -577,7 +581,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
       </div>
       <div class="footer-col">
         <div class="footer-label">HORAIRES</div>
-        <div class="content">Mar – Dim : 11h–15h · 18h–23h<br>Fermé lundi &amp; mercredi<br>Ouvert en saison</div>
+        <div class="content">7j/7 : 10h – 22h15<br>Cuisine en continu<br>Saison : avril → septembre</div>
       </div>
       <div class="footer-col">
         <div class="footer-label">CONTACT</div>
@@ -598,34 +602,34 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 <script>
 const MENU = {
   'PIZZAS': [
-    { name: 'ITALIENNE', price: '14€', desc: "Tomate, mozzarella, jambon cru, roquette, parmesan, huile d'olive.", img: 'assets/pizza-burrata.jpg' },
-    { name: 'MARGHERITA', price: '10€', desc: 'Tomate, mozzarella, basilic frais.', img: 'assets/four-pizza.jpg' },
-    { name: 'CHÈVRE & MIEL', price: '13€', desc: 'Crème, mozzarella, chèvre, miel, noix.', img: 'assets/pizza-sunset.jpg' },
-    { name: 'REINE', price: '12€', desc: 'Tomate, mozzarella, jambon, champignons.', img: 'assets/devanture-pizza.jpg' },
+    { name: 'ITALIENNE', price: '16,20 €', desc: 'Burrata, jambon italien, tomates cerises, crème balsamique, pignons.', img: 'assets/pizza-burrata.jpg' },
+    { name: 'MONTAGNARDE', price: '14,90 €', desc: 'Gorgonzola, jambon serrano, crème balsamique, pignons.', img: 'assets/pizza-sunset.jpg' },
+    { name: 'TARTIFLETTE', price: '15,50 €', desc: 'Pommes de terre, lardons, reblochon, oignons rouges.', img: 'assets/four-pizza.jpg' },
+    { name: 'MARGHERITA', price: '10,90 €', desc: 'Tomate, mozzarella, basilic frais.', img: 'assets/devanture-pizza.jpg' },
   ],
-  'PLANCHES': [
-    { name: 'PLANCHE APÉRO', price: '18€', desc: 'Charcuterie, fromages, olives, pain grillé.', ph: '[ PLANCHE APÉRO ]' },
-    { name: 'CHARCUTERIE', price: '14€', desc: 'Assortiment de charcuterie fine, cornichons.', ph: '[ CHARCUTERIE ]' },
-    { name: 'FROMAGES', price: '14€', desc: 'Sélection de fromages affinés, confiture.', ph: '[ FROMAGES ]' },
-    { name: 'PLANCHE MIXTE', price: '20€', desc: 'Le meilleur des deux, à partager.', ph: '[ PLANCHE MIXTE ]' },
+  'CÔTÉ MER': [
+    { name: 'TATAKI DE THON', price: '22,90 €', desc: 'Longe snackée, sauce asiatique, sésame, frites & salade.', img: 'assets/tataki-hd.jpg' },
+    { name: 'TARTARE DE SAUMON', price: '19,50 €', desc: 'Saumon frais & fumé, crème ciboulette.', ph: '[ TARTARE DE SAUMON ]' },
+    { name: 'MOULES MARINIÈRE', price: '13,90 €', desc: '700 g — vin blanc, échalotes, oignons, persil, frites maison.', img: 'assets/moules.jpg' },
+    { name: 'FISH & CHIPS', price: '18,90 €', desc: 'Cabillaud croustillant, sauce tartare.', ph: '[ FISH & CHIPS ]' },
   ],
-  'MOULES & PLATS': [
-    { name: 'MOULES-FRITES', price: '15€', desc: 'Moules marinière, frites maison.', img: 'assets/moules.jpg' },
-    { name: 'TARTARE DE THON', price: '16€', desc: 'Thon frais, avocat, sésame, condiments.', img: 'assets/tataki-hd.jpg' },
-    { name: 'BURGER MAISON', price: '15€', desc: 'Steak, cheddar, oignons confits, frites.', ph: '[ BURGER MAISON ]' },
-    { name: 'BOWL DU MOMENT', price: '14€', desc: "Selon l'inspiration du jour.", img: 'assets/bowl-burrata-hd.jpg' },
+  'BOWLS & SALADES': [
+    { name: 'BOWL BURRATA', price: '19,50 €', desc: 'Quinoa, jambon serrano, avocat, raisins frais, pignons, basilic.', img: 'assets/bowl-burrata-hd.jpg' },
+    { name: 'BOWL SAUMON OU THON', price: '19,50 €', desc: 'Tartare ou ceviche, mangue, feta, grenade, sésame.', img: 'assets/bowls-mains.jpg' },
+    { name: 'BOWL CROUSTI POULET', price: '19,50 €', desc: 'Poulet croustillant, légumes de saison.', img: 'assets/poulet-puree.jpg' },
+    { name: 'CROUSTI CÉSAR', price: '17,90 €', desc: 'Poulet croustillant, parmesan, croûtons.', img: 'assets/salades-crousti.jpg' },
   ],
-  'SALADES': [
-    { name: 'CÉSAR', price: '13€', desc: 'Poulet croustillant, parmesan, croûtons.', img: 'assets/salades-crousti.jpg' },
-    { name: 'VÉGÉ', price: '12€', desc: 'Légumes de saison, feta, graines.', img: 'assets/bowls-mains.jpg' },
-    { name: 'POKÉ SAUMON', price: '14€', desc: 'Riz, saumon, edamame, avocat.', ph: '[ POKÉ SAUMON ]' },
-    { name: 'CHÈVRE CHAUD', price: '12€', desc: 'Toasts de chèvre, miel, noix.', ph: '[ CHÈVRE CHAUD ]' },
+  'VIANDES': [
+    { name: 'ENTRECÔTE 350 G', price: '23,90 €', desc: 'Origine France. Sauce au choix, frites, salade ou légumes.', ph: '[ ENTRECÔTE ]' },
+    { name: 'TARTARE DE BŒUF', price: '19,90 €', desc: "Charolais, à l'italienne — pesto, parmesan, tomates mi-séchées, pignons.", img: 'assets/tartare.jpg' },
+    { name: "BAVETTE D'ALOYAU 250 G", price: '18,90 €', desc: 'Origine France. Sauce au choix, frites, salade ou légumes.', ph: '[ BAVETTE ]' },
+    { name: 'CAMEMBERT RÔTI', price: '19,90 €', desc: 'À partager — charcuterie, frites, salade.', ph: '[ CAMEMBERT RÔTI ]' },
   ],
   'COCKTAILS': [
-    { name: 'BASIL SMASH', price: '9€', desc: 'Gin, basilic frais, citron.', img: 'assets/cocktails.jpg' },
-    { name: 'MOJITO', price: '9€', desc: 'Rhum, menthe, citron vert, canne.', ph: '[ MOJITO ]' },
-    { name: 'SPRITZ', price: '8€', desc: 'Apérol, prosecco, eau pétillante.', ph: '[ SPRITZ ]' },
-    { name: 'PIÑA COLADA', price: '10€', desc: 'Rhum, ananas, coco.', ph: '[ PIÑA COLADA ]' },
+    { name: 'MOJITO', price: '9,50 €', desc: 'Rhum, menthe, citron vert, canne. Fraise ou passion 9,90 €.', img: 'assets/cocktails.jpg' },
+    { name: 'APEROL SPRITZ', price: '8,90 €', desc: 'Aperol, prosecco, eau pétillante.', ph: '[ APEROL SPRITZ ]' },
+    { name: 'PIÑA COLADA', price: '8,90 €', desc: 'Rhum, ananas, coco.', ph: '[ PIÑA COLADA ]' },
+    { name: 'TI PUNCH', price: '7,00 €', desc: 'Rhum agricole, citron vert, sucre de canne.', ph: '[ TI PUNCH ]' },
   ],
 };
 
@@ -644,7 +648,11 @@ function renderDishes() {
     <div class="dish">
       ${d.img
         ? `<div class="dish-img"><img src="${d.img}" alt="${d.name}" loading="lazy"></div>`
-        : `<div class="dish-ph"><span>${d.ph}</span></div>`}
+        : `<div class="dish-ph">
+             <span class="ph-name">${d.name.replace(/&/g, '&amp;')}</span>
+             <span class="ph-rule"></span>
+             <span class="ph-tag">${active.replace(/&/g, '&amp;')} · LE CAPRICE</span>
+           </div>`}
       <div class="dish-line">
         <span class="dish-name">${d.name.replace(/&/g, '&amp;')}</span>
         <span class="dish-price">${d.price}</span>
