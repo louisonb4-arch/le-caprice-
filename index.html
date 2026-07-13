@@ -45,7 +45,7 @@ html{scroll-behavior:smooth}
 body{font-family:var(--f-display);color:var(--ink);background:var(--olive-hover);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1}
 h1,h2{text-wrap:balance}
 p{text-wrap:pretty}
-.dish-price,.tm-tel,.avis-score .n,.item .p{font-variant-numeric:tabular-nums}
+.tm-tel,.avis-score .n,.item .p{font-variant-numeric:tabular-nums}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%;height:100%;object-fit:cover}
 
@@ -170,37 +170,38 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .ambiance .section-head span{color:var(--sage)}
 .ambiance .section-rule{background:var(--cream);opacity:0.4}
 
-/* ============ LA CARTE ============ */
+/* ============ LA CARTE (accordéon complet) ============ */
 .carte{background:var(--cream-warm);padding:132px 46px 124px}
 .carte-inner{max-width:1240px;margin:0 auto}
-.tabs{display:flex;flex-wrap:wrap;gap:0 30px;margin-bottom:44px;border-bottom:1px solid rgba(59,62,43,0.18)}
-.tab{position:relative;font-family:var(--f-mono);font-size:11.5px;letter-spacing:0.14em;padding:0 0 14px;border:none;background:none;color:#9a9885;cursor:pointer;transition:color .2s}
-.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--olive);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-.tab:hover{color:var(--ink)}
-.tab.active{color:var(--ink);font-weight:700}
-.tab.active::after{transform:scaleX(1)}
-.dishes{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;transition:opacity .15s}
-.dishes.fading{opacity:0}
-.dish-img{aspect-ratio:1/1;border-radius:24px;overflow:hidden}
-.dish-ph{position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:26px;background:var(--olive);color:var(--cream)}
-.dish-ph::after{content:"";position:absolute;top:-30%;right:-20%;width:70%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(236,230,217,0.14)}
-.dish-ph .ph-name{font-weight:800;font-size:clamp(19px,1.75vw,26px);line-height:1.02;letter-spacing:0.01em;text-transform:uppercase;text-wrap:balance}
-.dish-ph .ph-rule{width:34px;height:1px;background:rgba(236,230,217,0.45)}
-.dish-ph .ph-tag{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.22em;color:rgba(236,230,217,0.5)}
-.dish:hover .dish-ph{box-shadow:0 18px 40px rgba(44,42,34,0.16)}
-.dish-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;gap:10px}
-.dish{cursor:default;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.dish .dish-img,.dish .dish-ph{transition:filter .35s ease,box-shadow .35s ease}
-.dish:hover{transform:translateY(-6px)}
-.dish:hover .dish-img{filter:brightness(1.04);box-shadow:0 18px 40px rgba(44,42,34,0.16)}
-.dish:hover .dish-name{color:var(--sage)}
-.dish-name{font-weight:700;font-size:14px;letter-spacing:0.06em;transition:color .2s}
-.dish-price{font-family:var(--f-mono);font-weight:700;font-size:14px;color:var(--olive)}
-.dish-desc{margin:8px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink-soft)}
-.carte-cta{text-align:center;margin-top:52px}
-.btn-solid{display:inline-block;background:var(--olive);color:var(--cream);border-radius:40px;padding:16px 34px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;transition:background .2s}
-.btn-solid:hover{background:var(--olive-hover)}
-.carte-note{margin-top:14px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;color:#a09e8c}
+.menu-acc{border-top:1px solid rgba(59,62,43,0.16)}
+.cat{border-bottom:1px solid rgba(59,62,43,0.16)}
+.cat-head{width:100%;display:flex;align-items:baseline;gap:22px;padding:26px 0;background:none;border:none;text-align:left;cursor:pointer;color:var(--ink)}
+.cat-num{font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;color:var(--sage);flex:0 0 auto;transition:color .25s}
+.cat-name{font-weight:800;font-size:clamp(26px,3.1vw,42px);line-height:1;letter-spacing:0.01em;text-transform:uppercase;transition:transform .35s cubic-bezier(.2,.7,.2,1),color .25s}
+.cat-meta{margin-left:auto;font-family:var(--f-mono);font-size:11px;letter-spacing:0.1em;color:var(--sage);text-align:right;flex:0 0 auto}
+.cat-plus{position:relative;flex:0 0 auto;width:19px;height:19px;align-self:center;margin-left:6px}
+.cat-plus::before,.cat-plus::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1.5px;background:var(--olive);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.cat-plus::after{transform:rotate(90deg)}
+.cat-head:hover .cat-name{transform:translateX(8px)}
+.cat-head:hover .cat-num{color:var(--olive)}
+.cat.open .cat-plus::after{transform:rotate(0deg)}
+.cat.open .cat-num{color:var(--olive)}
+.cat-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1)}
+.cat.open .cat-panel{grid-template-rows:1fr}
+.cat-panel-in{overflow:hidden}
+.cat-story{margin:0 0 26px;font-family:var(--f-serif);font-style:italic;font-size:20px;line-height:1.45;color:var(--sage)}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 56px;padding-bottom:12px}
+.item{padding:11px 0;border-bottom:1px dotted rgba(59,62,43,0.16)}
+.item .line{display:flex;align-items:baseline;gap:10px}
+.item .n{font-weight:700;font-size:14.5px;letter-spacing:0.02em}
+.item .tag{margin-left:9px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);border:1px solid rgba(59,62,43,0.3);border-radius:20px;padding:2px 8px;vertical-align:middle}
+.item .dots{flex:1;border-bottom:1px dotted rgba(59,62,43,0.28);transform:translateY(-4px)}
+.item .p{font-family:var(--f-mono);font-weight:700;font-size:13.5px;color:var(--olive);white-space:nowrap}
+.item .d{display:block;margin-top:4px;font-size:13px;line-height:1.55;color:var(--ink-soft);max-width:46ch}
+.cat-note{margin:16px 0 30px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.06em;line-height:1.8;color:#a09e8c}
+.carte-cta{margin-top:40px;display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
+.carte-note{font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;line-height:1.9;color:#a09e8c}
+.carte-kids{font-family:var(--f-mono);font-size:11px;letter-spacing:0.14em;color:var(--olive);border:1px solid rgba(59,62,43,0.3);border-radius:40px;padding:11px 20px;white-space:nowrap}
 
 
 /* ============ AMBIANCE (scroll horizontal pinné) ============ */
@@ -313,20 +314,25 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   .section-head h2{font-size:30px}
   .section-head span{font-size:10px}
 
-  /* --- la carte --- */
+  /* --- la carte : accordéon compact --- */
   .carte{padding:64px 20px}
-  .tabs{gap:0 20px;margin-bottom:26px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:0 0 auto;font-size:10px;letter-spacing:0.08em;padding:0 0 11px}
-  .dishes{grid-template-columns:repeat(2,1fr);gap:14px}
-  .dish-img,.dish-ph{border-radius:14px}
-  .dish-line{margin-top:12px;gap:6px}
-  .dish-name{font-size:11.5px;letter-spacing:0.03em}
-  .dish-price{font-size:11.5px}
-  .dish-desc{font-size:11.5px;line-height:1.5;margin-top:5px}
-  .carte-cta{margin-top:34px}
-  .btn-solid{padding:14px 24px;font-size:11px}
+  .cat-head{gap:12px;padding:19px 0;flex-wrap:wrap;align-items:center}
+  .cat-num{font-size:10px;letter-spacing:0.12em}
+  .cat-name{font-size:21px;line-height:1.05;flex:1}
+  .cat-meta{order:3;flex:1 0 100%;margin:5px 0 0 26px;text-align:left;font-size:9.5px;letter-spacing:0.06em}
+  .cat-plus{width:15px;height:15px;margin-left:0}
+  .cat-head:hover .cat-name{transform:none}
+  .cat-story{margin:2px 0 18px 26px;font-size:16px;line-height:1.4}
+  .items{grid-template-columns:1fr;gap:0;padding-bottom:6px}
+  .item{padding:10px 0}
+  .item .n{font-size:13.5px}
+  .item .tag{margin-left:6px;font-size:8px;padding:1px 6px}
+  .item .p{font-size:12.5px}
+  .item .d{font-size:12px;line-height:1.5;max-width:none}
+  .cat-note{margin:12px 0 22px;font-size:9.5px;letter-spacing:0.04em;line-height:1.7}
+  .carte-cta{margin-top:26px;flex-direction:column;align-items:stretch;gap:14px}
   .carte-note{font-size:9.5px;letter-spacing:0.04em}
+  .carte-kids{text-align:center;font-size:10px;letter-spacing:0.1em;padding:12px 14px;white-space:normal}
 
   /* --- galerie : titre centré, swipe natif --- */
   .ambiance{padding:64px 0 0}
@@ -474,14 +480,13 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   <div class="carte-inner">
     <div class="section-head rv">
       <h2>LA CARTE</h2>
-      <span>/ SÉLECTION DU MOMENT</span>
+      <span>/ SAISON 2025</span>
     </div>
     <div class="section-rule"></div>
-    <div class="tabs rv" id="tabs"></div>
-    <div class="dishes" id="dishes"></div>
+    <div class="menu-acc rv" id="menuAcc"></div>
     <div class="carte-cta">
-      <a href="carte.html" class="btn-solid">VOIR LA CARTE COMPLÈTE</a>
-      <div class="carte-note">Prix nets service compris — carte susceptible d'évoluer selon la saison.</div>
+      <div class="carte-note">Prix nets, service compris.<br>Carte susceptible d'évoluer selon la saison et l'ardoise du jour.</div>
+      <div class="carte-kids">MENU ENFANTS 12,90 € · JUSQU'À 12 ANS</div>
     </div>
   </div>
 </section>
@@ -600,76 +605,165 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 </footer>
 
 <script>
-const MENU = {
-  'PIZZAS': [
-    { name: 'ITALIENNE', price: '16,20 €', desc: 'Burrata, jambon italien, tomates cerises, crème balsamique, pignons.', img: 'assets/pizza-burrata.jpg' },
-    { name: 'MONTAGNARDE', price: '14,90 €', desc: 'Gorgonzola, jambon serrano, crème balsamique, pignons.', img: 'assets/pizza-sunset.jpg' },
-    { name: 'TARTIFLETTE', price: '15,50 €', desc: 'Pommes de terre, lardons, reblochon, oignons rouges.', img: 'assets/four-pizza.jpg' },
-    { name: 'MARGHERITA', price: '10,90 €', desc: 'Tomate, mozzarella, basilic frais.', img: 'assets/devanture-pizza.jpg' },
-  ],
-  'CÔTÉ MER': [
-    { name: 'TATAKI DE THON', price: '22,90 €', desc: 'Longe snackée, sauce asiatique, sésame, frites & salade.', img: 'assets/tataki-hd.jpg' },
-    { name: 'TARTARE DE SAUMON', price: '19,50 €', desc: 'Saumon frais & fumé, crème ciboulette.', ph: '[ TARTARE DE SAUMON ]' },
-    { name: 'MOULES MARINIÈRE', price: '13,90 €', desc: '700 g — vin blanc, échalotes, oignons, persil, frites maison.', img: 'assets/moules.jpg' },
-    { name: 'FISH & CHIPS', price: '18,90 €', desc: 'Cabillaud croustillant, sauce tartare.', ph: '[ FISH & CHIPS ]' },
-  ],
-  'BOWLS & SALADES': [
-    { name: 'BOWL BURRATA', price: '19,50 €', desc: 'Quinoa, jambon serrano, avocat, raisins frais, pignons, basilic.', img: 'assets/bowl-burrata-hd.jpg' },
-    { name: 'BOWL SAUMON OU THON', price: '19,50 €', desc: 'Tartare ou ceviche, mangue, feta, grenade, sésame.', img: 'assets/bowls-mains.jpg' },
-    { name: 'BOWL CROUSTI POULET', price: '19,50 €', desc: 'Poulet croustillant, légumes de saison.', img: 'assets/poulet-puree.jpg' },
-    { name: 'CROUSTI CÉSAR', price: '17,90 €', desc: 'Poulet croustillant, parmesan, croûtons.', img: 'assets/salades-crousti.jpg' },
-  ],
-  'VIANDES': [
-    { name: 'ENTRECÔTE 350 G', price: '23,90 €', desc: 'Origine France. Sauce au choix, frites, salade ou légumes.', ph: '[ ENTRECÔTE ]' },
-    { name: 'TARTARE DE BŒUF', price: '19,90 €', desc: "Charolais, à l'italienne — pesto, parmesan, tomates mi-séchées, pignons.", img: 'assets/tartare.jpg' },
-    { name: "BAVETTE D'ALOYAU 250 G", price: '18,90 €', desc: 'Origine France. Sauce au choix, frites, salade ou légumes.', ph: '[ BAVETTE ]' },
-    { name: 'CAMEMBERT RÔTI', price: '19,90 €', desc: 'À partager — charcuterie, frites, salade.', ph: '[ CAMEMBERT RÔTI ]' },
-  ],
-  'COCKTAILS': [
-    { name: 'MOJITO', price: '9,50 €', desc: 'Rhum, menthe, citron vert, canne. Fraise ou passion 9,90 €.', img: 'assets/cocktails.jpg' },
-    { name: 'APEROL SPRITZ', price: '8,90 €', desc: 'Aperol, prosecco, eau pétillante.', ph: '[ APEROL SPRITZ ]' },
-    { name: 'PIÑA COLADA', price: '8,90 €', desc: 'Rhum, ananas, coco.', ph: '[ PIÑA COLADA ]' },
-    { name: 'TI PUNCH', price: '7,00 €', desc: 'Rhum agricole, citron vert, sucre de canne.', ph: '[ TI PUNCH ]' },
-  ],
-};
+const CARTE = [
+  {
+    name: 'PIZZAS', meta: '15 RECETTES · 10,90 — 16,20 €',
+    story: 'Le four ne redescend jamais vraiment en température.',
+    note: 'Supplément burrata, saumon ou jambon italien 4,50 €.',
+    items: [
+      { n: 'Italienne', tag: 'Signature', p: '16,20 €', d: 'Burrata, jambon italien, tomates cerises, crème balsamique, pignons.' },
+      { n: 'Nordique', p: '16,20 €', d: 'Crème ciboulette, saumon frais.' },
+      { n: 'Tartiflette', p: '15,50 €', d: 'Pommes de terre, lardons, reblochon, oignons rouges.' },
+      { n: 'Burger', p: '15,50 €', d: 'Cheddar râpé, viande hachée, oignons rouges.' },
+      { n: 'Montagnarde', p: '14,90 €', d: 'Gorgonzola, jambon serrano, crème balsamique, pignons.' },
+      { n: 'Fermière', p: '14,90 €', d: 'Gésiers, lardons, salade, croûtons.' },
+      { n: 'Pili-pili', p: '14,50 €', d: 'Poivrons, chorizo, merguez, œuf.' },
+      { n: 'Kébab', p: '14,50 €' },
+      { n: "Pop's", p: '14,20 €', d: 'Lardons, miel, chèvre.' },
+      { n: '4 Fromages', p: '14,20 €' },
+      { n: 'Végétarienne', p: '14,20 €' },
+      { n: 'Régina', p: '13,20 €' },
+      { n: 'Hawaï', p: '13,20 €' },
+      { n: 'Garlic Pizze', p: '11,90 €', d: 'Base crème, ail, persil.' },
+      { n: 'Margherita', p: '10,90 €' },
+    ],
+  },
+  {
+    name: 'MOULES DE BOUCHOT', meta: '700 G · SERVIES AVEC FRITES',
+    story: "La marmite qui fait la réputation de l'esplanade.",
+    items: [
+      { n: 'Marinière', p: '13,90 €', d: 'Vin blanc, échalotes, oignons, persil.' },
+      { n: 'Crème', p: '14,90 €' },
+      { n: 'Curry', p: '14,90 €' },
+      { n: 'Roquefort AOP', p: '15,90 €' },
+    ],
+  },
+  {
+    name: 'CÔTÉ MER', meta: '18,90 — 22,90 €',
+    story: 'Travaillé minute, servi face à la marée.',
+    items: [
+      { n: 'Tataki de Thon', tag: 'Signature', p: '22,90 €', d: 'Longe snackée, sauce asiatique, graines de sésame, frites & salade.' },
+      { n: 'Tartare de Saumon', p: '19,50 €', d: 'Saumon frais & fumé, crème ciboulette.' },
+      { n: 'Ceviche de Thon', p: '19,50 €', d: 'Thon frais assaisonné minute.' },
+      { n: 'Fish & Chips', p: '18,90 €', d: 'Cabillaud croustillant, sauce tartare.' },
+    ],
+  },
+  {
+    name: 'VIANDES', meta: 'ORIGINE FRANCE',
+    story: 'Cuisson au goût, sauces maison.',
+    note: "Sauces 2,70 € — poivre, roquefort, échalote, beurre maître d'hôtel · frites, salade ou légumes.",
+    items: [
+      { n: 'Entrecôte 350 g', p: '23,90 €' },
+      { n: 'Tartare de Bœuf Charolais', p: '19,90 €', d: "À l'italienne — pesto, parmesan, tomates mi-séchées, pignons." },
+      { n: "Bavette d'Aloyau 250 g", p: '18,90 €' },
+      { n: 'Grillade du Moment', p: 'ardoise' },
+    ],
+  },
+  {
+    name: 'BOWLS & SALADES', meta: '17,90 — 19,90 €',
+    story: 'Composés minute, généreux comme un midi de plage.',
+    items: [
+      { n: 'Bowl Burrata', tag: 'Signature', p: '19,50 €', d: 'Quinoa, jambon serrano, avocat, raisins frais, pignons, basilic.' },
+      { n: 'Bowl Saumon ou Thon', p: '19,50 €', d: 'Tartare ou ceviche, mangue, feta, grenade, sésame.' },
+      { n: 'Bowl Crousti Poulet', p: '19,50 €' },
+      { n: 'Camembert Rôti', tag: 'À partager', p: '19,90 €', d: 'Charcuterie, frites, salade.' },
+      { n: 'Salade Fermière', p: '17,90 €', d: 'Gésiers, lardons, feta, croûtons.' },
+      { n: 'Crousti César', p: '17,90 €' },
+      { n: 'Crousti Chèvre', p: '17,90 €', d: 'Chèvre croustillant, figues, balsamique.' },
+    ],
+  },
+  {
+    name: 'PLANCHES APÉRO', meta: 'MINI 13,90 € · MAXI 21,90 €',
+    story: "À sortir à l'heure dorée, face au couchant.",
+    items: [
+      { n: 'Planche Charcuterie-Fromage', tag: 'À partager', p: '13,90 / 21,90 €' },
+      { n: 'Assortiment Frit Apéro', p: '13,90 / 21,90 €' },
+      { n: 'Garlic Pizze à Partager', p: '11,90 €' },
+    ],
+  },
+  {
+    name: 'LE BAR', meta: 'COCKTAILS · PRESSIONS · VINS',
+    story: 'Servis généreux, jamais pressés.',
+    note: "Carte complète au bar — l'abus d'alcool est dangereux pour la santé.",
+    items: [
+      { n: 'Mojito', p: '9,50 €', d: 'Fraise ou passion 9,90 €.' },
+      { n: 'Caïpirina', p: '9,50 €' },
+      { n: 'Aperol Spritz', p: '8,90 €' },
+      { n: 'Piña Colada', p: '8,90 €' },
+      { n: 'Negroni', p: '8,90 €' },
+      { n: 'Ti Punch', p: '7,00 €' },
+      { n: 'Cocktails Sans Alcool', p: '7,90 €', d: "Caribbean sun, coco'matcha, virgin spritz…" },
+      { n: 'Bières Pression', p: 'dès 3,60 €', d: 'Stella, Leffe, Hoegaarden, Tripel Karmeliet.' },
+      { n: 'Vins au Verre', p: 'dès 4,30 €', d: 'Provence, Île de Beauté, Quincy, Pic Saint-Loup…' },
+    ],
+  },
+  {
+    name: 'SUCRÉ & GLACÉ', meta: "AUSSI L'APRÈS-MIDI, EN PLEINE SAISON",
+    story: "Le goûter des vacances, servi jusqu'au soir.",
+    items: [
+      { n: 'Crêpes', p: 'dès 3,30 €', d: 'Complète chocolat, Nutella ou caramel 7,90 €.' },
+      { n: 'Gaufres', p: 'dès 3,90 €' },
+      { n: 'Coulant au Chocolat', p: '8,50 €', d: 'Et sa boule vanille.' },
+      { n: 'Profiteroles', p: '9,90 €' },
+      { n: 'Cheesecake', p: '7,90 €' },
+      { n: 'Banana Split', p: '9,90 €' },
+      { n: 'Dame Blanche', p: '8,90 €' },
+      { n: 'Glaces & Sorbets', p: 'la boule 3,70 €', d: 'Vanille, pistache, rhum raisins, passion, cassis…' },
+    ],
+  },
+];
 
-let active = 'PIZZAS';
-const tabsEl = document.getElementById('tabs');
-const dishesEl = document.getElementById('dishes');
+const esc = s => s.replace(/&/g, '&amp;');
+const accEl = document.getElementById('menuAcc');
 
-function renderTabs() {
-  tabsEl.innerHTML = Object.keys(MENU).map(cat =>
-    `<button class="tab${cat === active ? ' active' : ''}" data-cat="${cat.replace(/&/g, '&amp;')}">${cat.replace(/&/g, '&amp;')}</button>`
-  ).join('');
-}
-
-function renderDishes() {
-  dishesEl.innerHTML = MENU[active].map(d => `
-    <div class="dish">
-      ${d.img
-        ? `<div class="dish-img"><img src="${d.img}" alt="${d.name}" loading="lazy"></div>`
-        : `<div class="dish-ph">
-             <span class="ph-name">${d.name.replace(/&/g, '&amp;')}</span>
-             <span class="ph-rule"></span>
-             <span class="ph-tag">${active.replace(/&/g, '&amp;')} · LE CAPRICE</span>
-           </div>`}
-      <div class="dish-line">
-        <span class="dish-name">${d.name.replace(/&/g, '&amp;')}</span>
-        <span class="dish-price">${d.price}</span>
+accEl.innerHTML = CARTE.map((cat, i) => `
+  <article class="cat" data-i="${i}">
+    <button class="cat-head" type="button" aria-expanded="false" aria-controls="panel-${i}">
+      <span class="cat-num">${String(i + 1).padStart(2, '0')}</span>
+      <span class="cat-name">${esc(cat.name)}</span>
+      <span class="cat-meta">${esc(cat.meta)}</span>
+      <span class="cat-plus" aria-hidden="true"></span>
+    </button>
+    <div class="cat-panel" id="panel-${i}">
+      <div class="cat-panel-in">
+        <p class="cat-story">${esc(cat.story)}</p>
+        <div class="items">
+          ${cat.items.map(it => `
+            <div class="item">
+              <span class="line">
+                <span class="n">${esc(it.n)}${it.tag ? `<span class="tag">${esc(it.tag)}</span>` : ''}</span>
+                <span class="dots"></span>
+                <span class="p">${esc(it.p)}</span>
+              </span>
+              ${it.d ? `<span class="d">${esc(it.d)}</span>` : ''}
+            </div>`).join('')}
+        </div>
+        ${cat.note ? `<p class="cat-note">${esc(cat.note)}</p>` : ''}
       </div>
-      <p class="dish-desc">${d.desc}</p>
-    </div>`
-  ).join('');
-}
+    </div>
+  </article>`).join('');
 
-tabsEl.addEventListener('click', e => {
-  const btn = e.target.closest('.tab');
-  if (!btn || btn.dataset.cat === active) return;
-  active = btn.dataset.cat;
-  renderTabs();
-  dishesEl.classList.add('fading');
-  setTimeout(() => { renderDishes(); dishesEl.classList.remove('fading'); }, 150);
+accEl.addEventListener('click', e => {
+  const head = e.target.closest('.cat-head');
+  if (!head) return;
+  const cat = head.parentElement;
+  const willOpen = !cat.classList.contains('open');
+  accEl.querySelectorAll('.cat.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.cat-head').setAttribute('aria-expanded', 'false');
+  });
+  if (willOpen) {
+    cat.classList.add('open');
+    head.setAttribute('aria-expanded', 'true');
+  }
+
+  // Le panneau change la hauteur de la page, ce qui déplace la galerie (pinnée
+  // par ScrollTrigger). Chrome n'émet pas de transitionend sur
+  // grid-template-rows : on recalcule les triggers à la fin de l'ouverture.
+  clearTimeout(accTimer);
+  accTimer = setTimeout(() => { if (window.ScrollTrigger) ScrollTrigger.refresh(); }, 580);
 });
+let accTimer = null;
 
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
@@ -698,8 +792,6 @@ window.addEventListener('scroll', () => {
   });
 }, {passive: true});
 
-renderTabs();
-renderDishes();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -728,6 +820,7 @@ renderDishes();
     gsap.ticker.lagSmoothing(0);
     lenis.stop();
   }
+  window.__lenis = lenis;
 
   /* ---- Animation d'ouverture : le wordmark se pose dans le hero ---- */
   const hero = document.querySelector('.hero');
