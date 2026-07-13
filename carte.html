@@ -10,22 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ember:#b2431f;
-  --ember-deep:#97361a;
-  --sun:#e05614;
-  --sun-bright:#ff7a2f;
-  --sun-deep:#c2440f;
-  --amber:#f5b83d;
-  --blush:#f2a99c;
-  --sand:#fff2e1;
-  --sand-warm:#ffe4cd;
-  --ink:#4a2113;
-  --ink-soft:#96604a;
-  --sand-light:#fff8ef;
-  --sand-title:#fff3e6;
-  --sand-muted:#ffd9b8;
-  --dusk:#cf7d5f;
-  --footer-bg:#b2431f;
+  --ember:#e8630f;
+  --ember-deep:#cf5405;
+  --sun:#e2620c;
+  --sun-bright:#ff8a1f;
+  --sun-deep:#c65205;
+  --amber:#ffc233;
+  --blush:#f7b9a6;
+  --sand:#fff6e6;
+  --sand-warm:#ffe9c9;
+  --ink:#5a2a08;
+  --ink-soft:#a06a3c;
+  --sand-light:#fffaf1;
+  --sand-title:#fff8ec;
+  --sand-muted:#ffe0b6;
+  --dusk:#c9702a;
+  --footer-bg:#e8630f;
   --f-display:'Archivo',sans-serif;
   --f-serif:'Cormorant Garamond',serif;
   --f-mono:'Space Mono',monospace;
@@ -40,7 +40,7 @@ a{color:inherit;text-decoration:none}
 
 /* ============ NAV ============ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:26px 44px;transition:background .25s ease,padding .25s ease,box-shadow .25s ease}
-.nav.scrolled{background:rgba(178,67,31,0.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:14px 44px;box-shadow:0 1px 0 rgba(246,234,215,0.08)}
+.nav.scrolled{background:rgba(232,99,15,0.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:14px 44px;box-shadow:0 1px 0 rgba(246,234,215,0.08)}
 .nav-logo{font-weight:800;font-size:23px;letter-spacing:0.02em;color:#fdf3e6}
 .nav-links{display:flex;align-items:center;gap:34px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;color:#f3e4cd}
 .nav-links a{position:relative;padding:4px 0}
@@ -65,12 +65,12 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 /* ============ HEADER ============ */
 .page-head{background:var(--ember);color:var(--sand);padding:128px 46px 44px;text-align:center;position:relative;overflow:hidden}
 .page-head h1,.page-head .sub,.page-head .kids{position:relative;z-index:1}
-.page-head .over{font-family:var(--f-mono);font-size:11px;letter-spacing:0.24em;color:var(--dusk);margin-bottom:14px;position:relative;z-index:1}
+.page-head .over{font-family:var(--f-mono);font-size:11px;letter-spacing:0.24em;color:rgba(255,246,230,0.72);margin-bottom:14px;position:relative;z-index:1}
 .page-head h1{font-weight:900;font-size:clamp(60px,9vw,120px);line-height:0.9;letter-spacing:-0.01em;color:var(--sand-title)}
-.page-head h1 .serif{font-family:var(--f-serif);font-style:italic;font-weight:500;text-transform:lowercase;font-size:0.8em;color:#f0c79a}
-.page-head .tagline{margin-top:10px;font-family:var(--f-serif);font-style:italic;font-size:clamp(19px,2.2vw,24px);color:#e8c39a;position:relative;z-index:1}
-.page-head .sub{margin-top:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.28em;color:rgba(253,246,234,0.65)}
-.page-head .kids{display:inline-block;margin-top:18px;border:1px solid rgba(246,234,215,0.4);border-radius:40px;padding:11px 22px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.12em;color:#f0c79a}
+.page-head h1 .serif{font-family:var(--f-serif);font-style:italic;font-weight:500;text-transform:lowercase;font-size:0.8em;color:rgba(255,246,230,0.9)}
+.page-head .tagline{margin-top:10px;font-family:var(--f-serif);font-style:italic;font-size:clamp(19px,2.2vw,24px);color:rgba(255,246,230,0.85);position:relative;z-index:1}
+.page-head .sub{margin-top:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.28em;color:rgba(255,246,230,0.7)}
+.page-head .kids{display:inline-block;margin-top:18px;border:1px solid rgba(246,234,215,0.4);border-radius:40px;padding:11px 22px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.12em;color:rgba(255,246,230,0.9)}
 
 /* ============ ONGLETS ============ */
 .toc{background:var(--ember);padding:6px 46px 48px;border-radius:0 0 64px 64px;position:relative;z-index:2}
@@ -88,14 +88,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .cat + .cat.active{margin-top:56px;padding-top:52px;border-top:1px solid rgba(178,67,31,0.18)}
 
 /* ============ DÉCO OMBRES ============ */
-.deco{position:absolute;pointer-events:none;user-select:none;z-index:0}
-.deco img{width:100%;height:auto;display:block;mix-blend-mode:multiply;
-  -webkit-mask-image:radial-gradient(120% 120% at top right,#000 40%,transparent 75%);
-  mask-image:radial-gradient(120% 120% at top right,#000 40%,transparent 75%)}
-.deco.left img{
-  -webkit-mask-image:radial-gradient(120% 120% at top left,#000 40%,transparent 75%);
-  mask-image:radial-gradient(120% 120% at top left,#000 40%,transparent 75%)}
-.deco.light img{mix-blend-mode:screen}
 
 /* ============ CATÉGORIES ============ */
 .menu-page{padding:116px 46px 32px;position:relative;overflow:hidden;background:var(--sand-warm)}
@@ -110,7 +102,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .cat-meta{font-family:var(--f-mono);font-size:11px;letter-spacing:0.1em;color:var(--dusk)}
 .cat-story{font-family:var(--f-serif);font-style:italic;font-size:19px;line-height:1.4;color:var(--ink-soft);max-width:300px;text-align:right;padding-bottom:4px}
 .cat-rule{width:56px;height:2px;background:var(--sun-bright);opacity:1;margin:14px 0 30px}
-.tag{display:inline-block;vertical-align:2px;margin-left:8px;font-family:var(--f-mono);font-weight:400;font-size:8.5px;letter-spacing:0.14em;padding:3px 9px;border:1px solid rgba(185,138,94,0.55);border-radius:20px;color:var(--dusk);white-space:nowrap;text-transform:uppercase}
+.tag{display:inline-block;vertical-align:2px;margin-left:8px;font-family:var(--f-mono);font-weight:400;font-size:8.5px;letter-spacing:0.14em;padding:3px 9px;border:1px solid rgba(201,112,42,0.5);border-radius:20px;color:var(--dusk);white-space:nowrap;text-transform:uppercase}
 .items{display:grid;grid-template-columns:1fr 1fr;column-gap:56px;row-gap:22px}
 .item .line{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
 .item .line::before{content:none}

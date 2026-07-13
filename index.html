@@ -10,22 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ember:#b2431f;
-  --ember-deep:#97361a;
-  --sun:#e05614;
-  --sun-bright:#ff7a2f;
-  --sun-deep:#c2440f;
-  --amber:#f5b83d;
-  --blush:#f2a99c;
-  --sand:#fff2e1;
-  --sand-warm:#ffe4cd;
-  --ink:#4a2113;
-  --ink-soft:#96604a;
-  --sand-light:#fff8ef;
-  --sand-title:#fff3e6;
-  --sand-muted:#ffd9b8;
-  --dusk:#cf7d5f;
-  --footer-bg:#b2431f;
+  --ember:#e8630f;
+  --ember-deep:#cf5405;
+  --sun:#e2620c;
+  --sun-bright:#ff8a1f;
+  --sun-deep:#c65205;
+  --amber:#ffc233;
+  --blush:#f7b9a6;
+  --sand:#fff6e6;
+  --sand-warm:#ffe9c9;
+  --ink:#5a2a08;
+  --ink-soft:#a06a3c;
+  --sand-light:#fffaf1;
+  --sand-title:#fff8ec;
+  --sand-muted:#ffe0b6;
+  --dusk:#c9702a;
+  --footer-bg:#e8630f;
   --f-display:'Archivo',sans-serif;
   --f-serif:'Cormorant Garamond',serif;
   --f-mono:'Space Mono',monospace;
@@ -35,11 +35,6 @@ html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto !important}
 ::selection{background:var(--dusk);color:var(--sand-light)}
-
-/* grain fin : donne de la matière, comme une impression */
-body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode:overlay}
 
 /* apparition des images (pas de zoom, opacité seule) */
 img{opacity:0;transition:opacity .6s ease}
@@ -104,7 +99,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .hero-img-in img{width:100%;height:100%;object-fit:cover}
 .hero-title-wrap{will-change:transform}
 .nav-logo{transition:opacity .3s ease}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,33,19,0.42) 0%,rgba(74,33,19,0.08) 36%,rgba(224,86,20,0.28) 66%,rgba(120,42,18,0.78) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(50,24,6,0.4) 0%,rgba(50,24,6,0.05) 38%,rgba(50,24,6,0.55) 100%)}
 .hero-info{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;padding:0 46px 6px;font-family:var(--f-mono);font-size:12px;line-height:2;letter-spacing:0.12em;color:#f3e4cd}
 .hero-info .right{text-align:right}
 .hero-title-wrap{position:relative;z-index:2;padding:0 40px 40px}
@@ -112,7 +107,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .hero-sub{text-align:center;margin-top:14px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.28em;color:rgba(255,243,230,0.65)}
 
 /* ============ INTRO (composition magazine) ============ */
-.intro{background:radial-gradient(120% 85% at 92% -8%,#ff9a4d 0%,rgba(255,138,60,0.45) 26%,rgba(242,169,156,0) 66%),var(--ember);color:var(--sand);padding:120px 0 24px;overflow:hidden}
+.intro{background:var(--ember);color:var(--sand);padding:120px 0 24px;overflow:hidden}
 .intro-head{max-width:1320px;margin:0 auto;padding:0 46px;position:relative;z-index:2}
 .intro-kicker{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:18px;border-bottom:1px solid rgba(255,242,225,0.18);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;color:var(--amber)}
 .intro-kicker .k-right{color:rgba(255,242,225,0.4)}
@@ -120,7 +115,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .intro-display .serif{font-family:var(--f-serif);font-style:italic;font-weight:500;text-transform:lowercase;font-size:0.94em;letter-spacing:0;color:#f0c79a;margin-left:0.06em}
 .intro-display .l2{display:block;padding-left:clamp(30px,9vw,140px);margin-top:6px}
 .intro-display .outline{color:transparent;-webkit-text-stroke:1.5px rgba(255,243,230,0.8)}
-.intro-display .dot{color:var(--dusk)}
+.intro-display .dot{color:var(--amber)}
 .intro-body{max-width:1320px;margin:-52px auto 0;padding:0 46px;display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,0.72fr);gap:52px;align-items:start}
 .intro-side{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;display:flex;align-items:center;font-family:var(--f-mono);font-size:10px;letter-spacing:0.26em;color:rgba(255,242,225,0.3);white-space:nowrap;min-height:0;overflow:hidden;padding-top:80px}
 .intro-col{padding-top:78px;max-width:440px}
@@ -128,7 +123,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .intro-text .lead{font-family:var(--f-serif);font-style:italic;font-size:22px;line-height:1.5;color:#f7e2c8;display:block;margin-bottom:14px}
 .intro-text .lead u{text-decoration:none;background:linear-gradient(to top,rgba(207,125,95,0.55) 2px,transparent 2px);padding-bottom:2px}
 .intro-num{margin:28px 0 26px;display:flex;align-items:baseline;gap:20px}
-.intro-num .big{font-weight:900;font-size:clamp(68px,7.5vw,116px);line-height:0.9;letter-spacing:-0.02em;color:transparent;-webkit-text-stroke:1.5px var(--dusk)}
+.intro-num .big{font-weight:900;font-size:clamp(68px,7.5vw,116px);line-height:0.9;letter-spacing:-0.02em;color:transparent;-webkit-text-stroke:1.5px rgba(255,246,230,0.75)}
 .intro-num .cap{font-family:var(--f-serif);font-style:italic;font-size:19px;line-height:1.35;color:#e8c39a;max-width:170px}
 .btn-outline{display:inline-block;border:1px solid rgba(255,242,225,0.5);border-radius:40px;padding:15px 30px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;color:var(--sand);transition:background .2s,color .2s;cursor:pointer}
 .btn-outline:hover{background:var(--sand);color:var(--ember)}
@@ -151,18 +146,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .no-anim .rv{opacity:1;transform:none}
 
 /* ============ DÉCO OMBRES ============ */
-.deco{position:absolute;pointer-events:none;user-select:none;z-index:0}
-.deco img{width:100%;height:auto;display:block;mix-blend-mode:multiply;
-  -webkit-mask-image:radial-gradient(120% 120% at top right,#000 40%,transparent 75%);
-  mask-image:radial-gradient(120% 120% at top right,#000 40%,transparent 75%)}
-.deco.left img{
-  -webkit-mask-image:radial-gradient(120% 120% at top left,#000 40%,transparent 75%);
-  mask-image:radial-gradient(120% 120% at top left,#000 40%,transparent 75%)}
-.deco.bl img{
-  -webkit-mask-image:radial-gradient(120% 120% at bottom left,#000 40%,transparent 75%);
-  mask-image:radial-gradient(120% 120% at bottom left,#000 40%,transparent 75%)}
-.deco.flip img{transform:scaleX(-1)}
-.deco.light img{mix-blend-mode:screen}
 .intro,.carte,.ambiance{position:relative;overflow:hidden}
 .carte-inner,.ambiance-head,.g-wrap{position:relative;z-index:1}
 
@@ -172,7 +155,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .section-head span{font-family:var(--f-mono);font-size:12px;letter-spacing:0.12em;color:var(--dusk)}
 .section-rule{width:56px;height:2px;background:var(--sun-bright);opacity:1;margin-bottom:40px}
 .ambiance .section-head h2{color:var(--sand-title)}
-.ambiance .section-head span{color:var(--dusk)}
+.ambiance .section-head span{color:rgba(255,246,230,0.75)}
 .ambiance .section-rule{background:var(--sand);opacity:0.4}
 
 /* ============ LA CARTE (accordéon complet) ============ */
@@ -210,7 +193,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 
 /* ============ AMBIANCE (scroll horizontal pinné) ============ */
-.ambiance{background:radial-gradient(105% 75% at 6% -12%,#ff9a4d 0%,rgba(242,169,156,0.42) 24%,rgba(242,169,156,0) 64%),var(--ember);color:var(--sand);padding:96px 0 0;overflow:hidden}
+.ambiance{background:var(--ember);color:var(--sand);padding:96px 0 0;overflow:hidden}
 .ambiance-head{max-width:1240px;margin:0 auto;padding:0 46px}
 .g-wrap{position:relative}
 .g-track{display:flex;gap:26px;padding:10px 46px 96px;align-items:flex-end;width:max-content;will-change:transform}
@@ -252,7 +235,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 /* ============ CITATION ============ */
 .quote{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#b2431f}
 .quote-img{position:absolute;top:-8%;left:0;right:0;height:116%;will-change:transform}
-.quote-overlay{position:absolute;inset:0;background:radial-gradient(110% 85% at 50% 50%,rgba(120,42,18,0.30) 0%,rgba(120,42,18,0.55) 100%)}
+.quote-overlay{position:absolute;inset:0;background:rgba(90,42,8,0.45)}
 .quote p{position:relative;z-index:2;padding:0 30px;font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:clamp(30px,4.5vw,52px);line-height:1.25;color:#fffaf2;text-align:center;max-width:900px;text-shadow:0 1px 3px rgba(24,12,7,0.55), 0 4px 30px rgba(24,12,7,0.75)}
 
 /* ============ UNE TABLE CÔTÉ MER ============ */
@@ -265,14 +248,14 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .tm-rule{width:min(300px,50%);height:2px;background:var(--sun-bright);opacity:1;margin:24px auto 0}
 .tm-note{margin-top:20px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.12em;color:#b5765a}
 /* ============ FOOTER ============ */
-.footer{background:radial-gradient(90% 100% at 100% 0%,#ff9a4d 0%,rgba(242,169,156,0.4) 28%,rgba(242,169,156,0) 68%),var(--footer-bg);color:#efc9a2;padding:136px 46px 34px}
+.footer{background:var(--footer-bg);color:rgba(255,246,230,0.82);padding:136px 46px 34px}
 .footer-inner{max-width:1180px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;padding-bottom:52px;border-bottom:1px solid rgba(255,217,184,0.16)}
 .footer-logo{font-weight:800;font-size:24px;color:var(--sand-title);margin-bottom:16px}
 .footer-baseline{font-family:var(--f-serif);font-style:italic;font-size:19px;line-height:1.45;color:rgba(255,242,225,0.72);max-width:280px}
 .footer-label{font-family:var(--f-mono);font-size:11px;letter-spacing:0.14em;color:var(--amber);margin-bottom:18px}
 .footer-col .content{font-size:14px;line-height:1.9}
-.footer .content a:hover{color:var(--dusk)}
+.footer .content a:hover{color:var(--amber)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;color:rgba(255,242,225,0.6);flex-wrap:wrap;gap:10px}
 
 /* ============ RESPONSIVE ============ */
@@ -449,8 +432,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 <!-- ============ INTRO ============ -->
 <section class="intro">
-  <div class="deco light left" style="top:-50px;left:-70px;width:480px;opacity:0.08;"><img src="assets/deco/deco-olivier.jpg" alt=""></div>
-  <div class="deco light" style="bottom:-120px;right:-80px;width:460px;opacity:0.06;"><img src="assets/deco/deco-palmiers.jpg" alt=""></div>
   <div class="intro-head">
     <div class="intro-kicker">
       <span>01 — LA MAISON</span>
@@ -498,8 +479,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 <!-- ============ AMBIANCE (scroll horizontal pinné) ============ -->
 <section id="ambiance" class="ambiance">
-  <div class="deco light flip" style="top:-30px;left:-50px;width:460px;opacity:0.07;"><img src="assets/deco/deco-graminees.jpg" alt=""></div>
-  <div class="deco light" style="top:-20px;right:-60px;width:420px;opacity:0.07;"><img src="assets/deco/deco-palme.jpg" alt=""></div>
   <div class="ambiance-head">
     <div class="section-head rv">
       <h2>LA GALERIE</h2>
@@ -521,7 +500,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 <!-- ============ AVIS ============ -->
 <section id="avis" class="avis">
-  <div class="deco left" style="bottom:-70px;left:-70px;width:430px;opacity:0.26;"><img src="assets/deco/deco-monstera.jpg" alt=""></div>
   <div class="avis-in">
     <div class="avis-kicker rv">
       <span>03 — LES AVIS</span>
@@ -568,7 +546,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 
 <!-- ============ UNE TABLE CÔTÉ MER ============ -->
 <section id="reserver" class="table-mer">
-  <div class="deco" style="bottom:-80px;right:-70px;width:440px;opacity:0.3;"><img src="assets/deco/deco-palme.jpg" alt=""></div>
   <div class="table-mer-inner rv">
     <h2 class="tm-title">Une table côté mer <span class="q">?</span></h2>
     <a href="tel:0951060289" class="tm-tel">09 51 06 02 89</a>
