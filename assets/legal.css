@@ -1,0 +1,228 @@
+/* ============================================================================
+   LE CAPRICE — pages légales · « Le contre-jour »
+   ----------------------------------------------------------------------------
+   Même lumière que le reste du site : le sable, l'ember, l'ardoise.
+   L'heure dorée a un contre-jour — c'est ici qu'on regarde vers la lumière
+   et qu'on voit ce qu'il y a derrière.
+
+   Mêmes variables, mêmes polices, mêmes gestes (les points de conduite de la
+   carte, la numérotation de l'accordéon, le trait couchant) que index.html
+   et carte.html. Rien de nouveau : le vocabulaire du site, appliqué au droit.
+   ========================================================================== */
+
+:root{
+  --ember:#e8630f;
+  --ember-deep:#cf5405;
+  --sun:#e2620c;
+  --sun-bright:#ff8a1f;
+  --amber:#ffc233;
+  --blush:#f7b9a6;
+  --sand:#fff6e6;
+  --sand-warm:#ffe9c9;
+  --ink:#5a2a08;
+  --ink-soft:#a06a3c;
+  --sand-light:#fffaf1;
+  --sand-title:#fff8ec;
+  --sand-muted:#ffe0b6;
+  --dusk:#c9702a;
+  --footer-bg:#e8630f;
+  --line:rgba(178,67,31,0.18);
+  --line-strong:rgba(178,67,31,0.38);
+  --f-display:'Archivo',sans-serif;
+  --f-serif:'Cormorant Garamond',serif;
+  --f-mono:'Space Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+::selection{background:var(--dusk);color:var(--sand-light)}
+:focus-visible{outline:2px solid var(--dusk);outline-offset:3px;border-radius:2px}
+button,a{touch-action:manipulation}
+body{font-family:var(--f-display);color:var(--ink);background:var(--sand-warm);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1}
+h1,h2{text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+
+/* ============ NAV — identique au reste du site ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:26px 44px;transition:background .25s ease,padding .25s ease,box-shadow .25s ease}
+.nav.scrolled{background:rgba(178,67,31,0.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:14px 44px;box-shadow:0 1px 0 rgba(255,242,225,0.08)}
+.nav-logo{font-weight:800;font-size:23px;letter-spacing:0.02em;color:#fdf3e6}
+.nav-links{display:flex;align-items:center;gap:34px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;color:#f3e4cd}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links a:hover{color:var(--sand-light)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-tel{display:flex;align-items:center;gap:9px;border:1px solid rgba(255,243,230,0.55);border-radius:40px;padding:11px 20px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.08em;color:#fdf3e6;transition:background .2s,color .2s}
+.nav-tel:hover{background:#f6ead7;color:var(--ember)}
+.nav-tel svg{width:13px;height:13px;opacity:.7;flex-shrink:0}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:30}
+.burger span{display:block;width:24px;height:2px;background:#fdf3e6;margin:5px 0;transition:transform .25s,opacity .25s}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:25;background:var(--ember);flex-direction:column;align-items:center;justify-content:center;gap:34px;font-family:var(--f-mono);font-size:15px;letter-spacing:0.18em;color:var(--sand)}
+.mobile-menu.open{display:flex}
+body.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.btn-outline{display:inline-block;border:1px solid rgba(246,234,215,0.5);border-radius:40px;padding:15px 30px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;color:var(--sand);transition:background .2s,color .2s}
+.btn-outline:hover{background:var(--sand);color:var(--ember)}
+.btn-solid{display:inline-block;background:var(--ember);color:var(--sand);border-radius:40px;padding:16px 34px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;transition:background .2s}
+.btn-solid:hover{background:var(--ember-deep)}
+.btn-ghost{display:inline-block;border:1px solid rgba(224,86,20,0.45);border-radius:40px;padding:15px 32px;font-family:var(--f-mono);font-size:12px;letter-spacing:0.14em;color:var(--sun);transition:background .2s,color .2s,border-color .2s}
+.btn-ghost:hover{background:var(--ember);border-color:var(--ember);color:var(--sand)}
+.btn-outline:active,.btn-solid:active,.btn-ghost:active,.nav-tel:active{transform:scale(0.97)}
+.btn-outline,.btn-solid,.btn-ghost,.nav-tel{will-change:transform;transition-property:background,color,border-color,transform;transition-duration:.2s}
+
+/* ============ EN-TÊTE — le contre-jour ============ */
+/* Orange franc en aplat, comme le reste du site : aucune lueur, aucun dégradé.
+   (cf. commit « Orange franc en aplat : suppression des lueurs, du grain et
+   des décors fondus » — c'est la DA en vigueur, on ne la rouvre pas ici.) */
+.page-head{background:var(--ember);color:var(--sand);padding:128px 46px 76px;text-align:center;
+  position:relative;overflow:hidden;border-radius:0 0 64px 64px;z-index:2}
+.page-head > *{position:relative;z-index:1}
+.page-head .over{font-family:var(--f-mono);font-size:11px;letter-spacing:0.24em;color:rgba(255,246,230,0.72);margin-bottom:14px}
+.page-head h1{font-weight:900;font-size:clamp(46px,7.6vw,104px);line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;color:var(--sand-title)}
+/* le mot italique et son point restent solidaires : ils passent à la ligne ensemble */
+.page-head h1 .serif-line{display:inline;white-space:nowrap}
+.page-head h1 .serif{font-family:var(--f-serif);font-style:italic;font-weight:500;text-transform:lowercase;font-size:0.8em;color:rgba(255,246,230,0.9)}
+.page-head h1 .dot{color:var(--amber)}
+.page-head .tagline{margin-top:14px;font-family:var(--f-serif);font-style:italic;font-size:clamp(19px,2.2vw,24px);line-height:1.45;color:rgba(255,246,230,0.85);max-width:44ch;margin-left:auto;margin-right:auto}
+.page-head .sub{margin-top:20px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;color:rgba(255,246,230,0.62)}
+
+/* ============ CORPS ============ */
+.legal{background:var(--sand-warm);margin-top:-64px;padding:132px 46px 40px;position:relative;z-index:1;counter-reset:legal}
+.legal-in{max-width:860px;margin:0 auto}
+.legal-in > p,.legal-in > ul,.legal-in > ol{max-width:68ch}
+.legal-in p{font-size:15.5px;line-height:1.9;color:var(--ink-soft)}
+.legal-in p + p{margin-top:1em}
+.legal-in strong{color:var(--ink);font-weight:700}
+
+/* Titres : numérotés comme les chapitres de la carte */
+.legal-in h2{counter-increment:legal;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  margin:clamp(46px,6vh,72px) 0 18px;padding-top:26px;border-top:1px solid var(--line);
+  font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1.05;letter-spacing:0.01em;
+  text-transform:uppercase;color:var(--ink)}
+.legal-in h2::before{content:counter(legal,decimal-leading-zero);flex:0 0 auto;
+  font-family:var(--f-mono);font-weight:400;font-size:11px;letter-spacing:0.16em;color:var(--sun)}
+.legal-in h3{margin:32px 0 10px;font-family:var(--f-serif);font-style:italic;font-weight:500;
+  font-size:clamp(19px,1.9vw,23px);line-height:1.3;color:var(--dusk)}
+
+.legal-in ul,.legal-in ol{margin:14px 0;padding-left:0;list-style:none}
+.legal-in li{position:relative;padding:5px 0 5px 24px;font-size:15.5px;line-height:1.85;color:var(--ink-soft)}
+.legal-in li::before{content:"";position:absolute;left:0;top:15px;width:10px;height:2px;background:var(--sun-bright)}
+
+.legal-in a:not(.btn-solid):not(.btn-ghost){color:var(--sun);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-thickness:1px;text-decoration-color:rgba(224,86,20,0.4);
+  transition:color .2s,text-decoration-color .2s}
+.legal-in a:not(.btn-solid):not(.btn-ghost):hover{color:var(--dusk);text-decoration-color:var(--dusk)}
+.legal-in code{font-family:var(--f-mono);font-size:0.86em;background:rgba(178,67,31,0.08);
+  border-radius:3px;padding:2px 6px;color:var(--ink)}
+
+/* Fiche d'identité : elle se lit comme une ligne de la carte, points de conduite compris */
+.legal-id{margin:20px 0 10px;max-width:68ch}
+.legal-id li{display:flex;align-items:baseline;gap:10px;padding:9px 0;
+  border-bottom:1px dotted var(--line);font-size:14.5px;line-height:1.6}
+.legal-id li::before{content:none}
+.legal-id .k{flex:0 0 auto;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--dusk)}
+.legal-id .lead{flex:1;min-width:16px;align-self:center;border-bottom:1px dotted var(--line-strong);
+  transform:translateY(-3px)}
+.legal-id .v{flex:0 1 auto;text-align:right;font-weight:700;color:var(--ink)}
+.legal-id .v a{font-weight:700}
+
+/* Encadré « d'où viennent ces données » — l'ardoise posée à côté */
+.legal-source{margin:26px 0;padding:22px 24px;max-width:68ch;
+  background:rgba(255,255,255,0.42);border:1px solid var(--line);border-left:3px solid var(--sun-bright);
+  border-radius:4px 18px 18px 4px}
+.legal-source p{font-size:14px;line-height:1.8;color:var(--ink-soft)}
+.legal-source p + p{margin-top:.8em}
+.legal-source strong{display:inline;color:var(--ink)}
+.legal-source .lab{display:block;margin-bottom:10px;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--sun)}
+
+/* Trou assumé : ce qui n'a pas pu être vérifié se voit. Rose partout, exprès. */
+.manque{background:#FFD9E2;color:#7A0B26;padding:1px 7px;border-radius:2px;font-weight:500;
+  font-size:.94em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* Séparateur — la houle, comme en face */
+.legal-sep{margin:clamp(44px,6vh,68px) 0;text-align:center;color:var(--sun-bright);
+  font-size:15px;letter-spacing:.7em;opacity:.75;user-select:none}
+
+.legal-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  margin:clamp(48px,7vh,76px) 0 0;padding-top:34px;border-top:1px solid var(--line)}
+
+/* ============ PIED — même bloc que le reste du site ============ */
+.legal-foot-space{background:var(--sand-warm);height:64px}
+.footer{background:var(--footer-bg);color:rgba(255,246,230,0.82);padding:136px 46px 34px;
+  border-radius:64px 64px 0 0;margin-top:-64px;position:relative;z-index:1}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;padding-bottom:52px;border-bottom:1px solid rgba(255,217,184,0.16)}
+.footer-logo{font-weight:800;font-size:24px;color:var(--sand-title);margin-bottom:16px}
+.footer-baseline{font-family:var(--f-serif);font-style:italic;font-size:19px;line-height:1.45;color:rgba(255,242,225,0.72);max-width:280px}
+.footer-label{font-family:var(--f-mono);font-size:11px;letter-spacing:0.14em;color:var(--amber);margin-bottom:18px}
+.footer-col .content{font-size:14px;line-height:1.9}
+.footer .content a:hover{color:var(--amber)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px 26px;padding-top:26px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;color:rgba(255,242,225,0.6);flex-wrap:wrap}
+.footer-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-legal a{position:relative;padding-bottom:3px}
+.footer-legal a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.footer-legal a:hover{color:var(--amber)}
+.footer-legal a:hover::after{transform:scaleX(1)}
+.footer-legal a[aria-current="page"]{color:var(--amber)}
+.footer-legal a[aria-current="page"]::after{transform:scaleX(1)}
+.footer-sign a{border-bottom:1px solid rgba(255,242,225,0.35);padding-bottom:2px;transition:color .2s,border-color .2s}
+.footer-sign a:hover{color:var(--amber);border-color:var(--amber)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .nav{padding:18px 20px}
+  .nav.scrolled{padding:12px 20px}
+  .nav-links,.nav-tel{display:none}
+  .burger{display:block;margin:-8px -8px -8px 0}
+  .mobile-menu{gap:26px;font-size:14px;padding:0 24px;text-align:center}
+  .mobile-menu .btn-outline{margin-top:10px}
+
+  .page-head{padding:92px 22px 46px;border-radius:0 0 28px 28px}
+  .page-head .over{font-size:9px;letter-spacing:0.18em;margin-bottom:10px}
+  /* « CONFIDENTIALITÉ » est un seul mot de 15 caractères : il ne peut pas se
+     couper. L'échelle est calée pour qu'il tienne dès 320 px sans être rogné
+     par l'overflow:hidden de l'en-tête. */
+  .page-head h1{font-size:clamp(24px,8.2vw,46px);line-height:0.95}
+  .page-head h1 .serif-line{display:block;margin-top:4px}
+  .page-head h1 .serif{font-size:0.66em}
+  .page-head h1 .dot{font-size:0.66em}
+  .page-head .tagline{margin-top:10px;font-size:17px}
+  .page-head .sub{margin-top:14px;font-size:9px;letter-spacing:0.14em}
+
+  .legal{margin-top:-28px;padding:64px 20px 24px}
+  .legal-in p,.legal-in li{font-size:15px;line-height:1.75}
+  .legal-in h2{gap:12px;font-size:21px;padding-top:20px;margin:40px 0 14px}
+  .legal-in h3{font-size:17px}
+  .legal-source{padding:18px 18px;border-radius:4px 14px 14px 4px}
+  .legal-source p{font-size:13.5px}
+
+  /* la fiche d'identité passe en deux lignes : le libellé, puis la valeur */
+  .legal-id li{flex-direction:column;align-items:flex-start;gap:3px;padding:11px 0}
+  .legal-id .lead{display:none}
+  .legal-id .v{text-align:left;font-size:14.5px}
+
+  .legal-sep{margin:36px 0;font-size:13px;letter-spacing:.5em}
+  .legal-actions{flex-direction:column;align-items:stretch;gap:12px;margin-top:40px;padding-top:28px}
+  .legal-actions a{text-align:center}
+
+  .legal-foot-space{height:32px}
+  .footer{padding:76px 20px 30px;border-radius:32px 32px 0 0;margin-top:-32px}
+  .footer-grid{grid-template-columns:1fr;gap:28px;padding-bottom:34px}
+  .footer-logo{font-size:20px;margin-bottom:12px}
+  .footer-baseline{font-size:17px}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;font-size:9px}
+  .footer-legal{gap:14px}
+}
+
+/* ============ ACCESSIBILITÉ ============ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+}

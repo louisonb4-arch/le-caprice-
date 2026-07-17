@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Caprice — Bar-restaurant face à l'océan · Saint-Jean-de-Monts</title>
 <meta name="description" content="Le Caprice, bar-restaurant face à l'océan sur l'Esplanade de la Mer à Saint-Jean-de-Monts. Pizzas, planches, moules-frites et cocktails. 195 Esplanade de la Mer — 09 51 06 02 89.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/font/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/font/space-mono-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/font/fonts.css">
 <style>
 :root{
   --ember:#e8630f;
@@ -256,7 +256,14 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
 .footer-label{font-family:var(--f-mono);font-size:11px;letter-spacing:0.14em;color:var(--amber);margin-bottom:18px}
 .footer-col .content{font-size:14px;line-height:1.9}
 .footer .content a:hover{color:var(--amber)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;color:rgba(255,242,225,0.6);flex-wrap:wrap;gap:10px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.08em;color:rgba(255,242,225,0.6);flex-wrap:wrap;gap:10px 26px}
+.footer-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-legal a{position:relative;padding-bottom:3px}
+.footer-legal a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.footer-legal a:hover{color:var(--amber)}
+.footer-legal a:hover::after{transform:scaleX(1)}
+.footer-sign a{border-bottom:1px solid rgba(255,242,225,0.35);padding-bottom:2px;transition:color .2s,border-color .2s}
+.footer-sign a:hover{color:var(--amber);border-color:var(--amber)}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:900px){
@@ -372,7 +379,8 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
   .footer-grid{grid-template-columns:1fr;gap:28px;padding-bottom:34px}
   .footer-logo{font-size:20px;margin-bottom:12px}
   .footer-baseline{font-size:17px}
-  .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;font-size:9px}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;font-size:9px}
+  .footer-legal{gap:14px}
 }
 
 </style>
@@ -580,8 +588,13 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45de
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 LE CAPRICE — TOUS DROITS RÉSERVÉS</span>
-      <span>SAINT-JEAN-DE-MONTS · VENDÉE</span>
+      <span>© 2026 LE CAPRICE — ASMV · SAINT-JEAN-DE-MONTS</span>
+      <nav class="footer-legal" aria-label="Informations légales">
+        <a href="mentions-legales.html">MENTIONS LÉGALES</a>
+        <a href="confidentialite.html">CONFIDENTIALITÉ</a>
+        <a href="confidentialite.html#cookies">COOKIES</a>
+      </nav>
+      <span class="footer-sign">CRÉATION <a href="https://vokumagency.com" target="_blank" rel="noopener">VOKUM</a></span>
     </div>
   </div>
 </footer>
@@ -775,9 +788,9 @@ window.addEventListener('scroll', () => {
 }, {passive: true});
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/lenis.min.js"></script>
 <script>
 (function () {
   const flat = location.search.includes('flat=1');

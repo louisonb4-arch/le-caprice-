@@ -1,0 +1,6 @@
+# Maquettes de travail — ne doivent jamais être mises en ligne.
+# Elles chargent encore les polices depuis fonts.googleapis.com (fuite d'IP
+# vers Google sans consentement) et contiennent des versions abandonnées de
+# la carte et des prix. Voir LEGAL-TODO.md § bloquant.
+_v1-heure-doree.html
+_v2-du-matin-a-minuit.html
